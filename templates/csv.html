@@ -7,13 +7,20 @@
 <body>
 {% block content %}
     {% if isstable %}
-    <form method="post" action="{{ url_for('show_csv') }}" enctype="multipart/form-data">
-        <input type="file" id="send_data" name="send_data">
-        <input type="submit" value="送信">
-    </form>
+        <p>
+            エラーが出た場合は、タブを閉じ、再び開いて実行してください。<br>
+            課題でのtest_x.csvと同じカラムを持ったcsvファイルをアップロードしてください。
+        </p>
+        <form method="post" action="{{ url_for('show_csv') }}" enctype="multipart/form-data">
+            <input type="file" id="send_data" name="send_data">
+            <input type="submit" value="送信">
+        </form>
     {% endif %}
     <div>
         {% if result %}
+            <p>
+                エンコーディング作業、カラムの削除等を行います。
+            </p>
             <form method="post" action="{{ url_for('process_data') }}" enctype="multipart/form-data">
                 <input type="submit" value="データ加工を開始">
             </form>
@@ -29,6 +36,9 @@
     </div>
     <div>
         {% if isfile %}
+            <p>
+                csvファイルをダウンロードしてください。
+            </p>
             <form method="get" action="{{ url_for('download_file') }}" enctype="multipart/form-data">
                 <input type="submit" value="csvファイルをダウンロード">
             </form>
