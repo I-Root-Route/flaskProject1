@@ -47,7 +47,8 @@ def process_data():
     if request.method == 'POST':
         import dataprocessing
         dataprocessing
-        is_processed_file = os.path.exists(BASE_DIR + '/processed/X_test_processed.csv')
+        is_processed_file = True
+        # is_processed_file = os.path.exists(BASE_DIR + '/processed/X_test_processed.csv')
         return render_template('csv.html', exist=is_processed_file)
 
 
@@ -56,7 +57,8 @@ def get_final_result():
     if request.method == 'POST':
         import prediction
         prediction
-        isfile = os.path.exists(BASE_DIR + '/final_result/final_result.csv')
+        isfile = True
+        # isfile = os.path.exists(BASE_DIR + '/final_result/final_result.csv')
         return render_template('csv.html', isfile=isfile)
 
 
@@ -76,5 +78,5 @@ def download_file():
 
 
 if __name__ == '__main__':
-    # app.debug = True
+    app.debug = True
     app.run()
