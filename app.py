@@ -7,7 +7,7 @@ import glob
 app = Flask(__name__)
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-UPLOAD_FOLDER = './uploads'
+UPLOAD_FOLDER = BASE_DIR + '/uploads'
 ALLOWED_EXTENSIONS = set(['csv'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = os.urandom(24)
@@ -30,7 +30,7 @@ def show_csv():
         if send_data and allowed_file(send_data.filename):
             filename = secure_filename(send_data.filename)
             send_data.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            f = open('uploads/' + filename, 'r')
+            f = open(BASE_DIR + '/uploads/' + filename, 'r')
             f_reader = csv.reader(f)
             result = list(f_reader)
 
