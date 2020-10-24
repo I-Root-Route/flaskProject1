@@ -27,7 +27,7 @@
     </div>
     <div>
         {% if isfile %}
-            <form method="post" action="{{ url_for('download_file') }}" enctype="multipart/form-data">
+            <form method="get" action="{{ url_for('download_file') }}" enctype="multipart/form-data">
                 <input type="submit" value="csvファイルをダウンロード">
             </form>
         {% endif %}

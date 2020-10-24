@@ -62,11 +62,11 @@ def get_final_result():
         return render_template('csv.html', isfile=isfile)
 
 
-@app.route('/download_file', methods=['GET', 'POST'])
+@app.route('/download_file', methods=['GET'])
 def download_file():
     # upload_path = glob.glob(BASE_DIR + '/uploads/*.csv')[0]
     # processed_path = glob.glob(BASE_DIR + '/processed/X_test_processed.csv')[0]
-    if request.method == 'POST':
+    if request.method == 'GET':
         # os.remove(upload_path)
         # os.remove(processed_path)
         return send_from_directory(
