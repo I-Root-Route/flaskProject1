@@ -64,11 +64,11 @@ def get_final_result():
 
 @app.route('/download_file', methods=['GET', 'POST'])
 def download_file():
-    upload_path = glob.glob(BASE_DIR + '/uploads/*.csv')[0]
-    processed_path = glob.glob(BASE_DIR + '/processed/X_test_processed.csv')[0]
+    # upload_path = glob.glob(BASE_DIR + '/uploads/*.csv')[0]
+    # processed_path = glob.glob(BASE_DIR + '/processed/X_test_processed.csv')[0]
     if request.method == 'POST':
-        os.remove(upload_path)
-        os.remove(processed_path)
+        # os.remove(upload_path)
+        # os.remove(processed_path)
         return send_from_directory(
             directory=BASE_DIR + '/final_result',
             filename='final_result.csv',
