@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ML Pred</title>
+</head>
+<body>
+{% block content %}
+    <form method="post" action="{{ url_for('show_csv') }}" enctype="multipart/form-data">
+        <input type="file" id="send_data" name="send_data">
+        <input type="submit" value="送信">
+    </form>
+    <div>
+        {% if result %}
+            <form method="post" action="{{ url_for('process_data') }}" enctype="multipart/form-data">
+                <input type="submit" value="データ加工を開始">
+            </form>
+        {% endif %}
+    </div>
+    <div>
+        {% if exist %}
+            <p>データ加工が完了しました！</p>
+            <form method="post" action="{{ url_for('get_final_result') }}" enctype="multipart/form-data">
+                <input type="submit" value="XGBoostでの応募数予測結果を取得">
+            </form>
+        {% endif %}
+    </div>
+    <div>
+        {% if isfile %}
+            <form method="post" action="{{ url_for('download_file') }}" enctype="multipart/form-data">
+                <input type="submit" value="csvファイルをダウンロード">
+            </form>
+        {% endif %}
+    </div>
+{% endblock %}
+</body>
+</html>
