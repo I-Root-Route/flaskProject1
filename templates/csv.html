@@ -6,10 +6,12 @@
 </head>
 <body>
 {% block content %}
+    {% if isstable %}
     <form method="post" action="{{ url_for('show_csv') }}" enctype="multipart/form-data">
         <input type="file" id="send_data" name="send_data">
         <input type="submit" value="送信">
     </form>
+    {% endif %}
     <div>
         {% if result %}
             <form method="post" action="{{ url_for('process_data') }}" enctype="multipart/form-data">

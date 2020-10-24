@@ -20,7 +20,8 @@ def allowed_file(filename):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('csv.html')
+    isstable = True
+    return render_template('csv.html', isstable=isstable)
 
 
 @app.route('/show_csv', methods=['GET', 'POST'])
@@ -64,11 +65,11 @@ def get_final_result():
 
 @app.route('/download_file', methods=['GET'])
 def download_file():
-    # upload_path = glob.glob(BASE_DIR + '/uploads/*.csv')[0]
-    # processed_path = glob.glob(BASE_DIR + '/processed/X_test_processed.csv')[0]
+    upload_path = glob.glob(BASE_DIR + '/uploads/*.csv')[0]
+    processed_path = glob.glob(BASE_DIR + '/processed/X_test_processed.csv')[0]
     if request.method == 'GET':
-        # os.remove(upload_path)
-        # os.remove(processed_path)
+        os.remove(upload_path)
+        os.remove(processed_path)
         return send_from_directory(
             directory=BASE_DIR + '/final_result',
             filename='final_result.csv',
